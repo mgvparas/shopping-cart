@@ -9,24 +9,6 @@ namespace ShoppingCart.Domain.Tests
     public class ShopTests
     {
         [Fact]
-        public void ShopHasNoItemTypes()
-        {
-            var shop = new Shop();
-
-            Assert.Equal(new List<ShoppingItemType>(), shop.ShoppingItemTypes);
-        }
-
-        [Fact]
-        public void AddItemTypeToShop()
-        {
-            var shop = new Shop();
-
-            shop.AddItemType(new ShoppingItemType());
-
-            Assert.Single(shop.ShoppingItemTypes);
-        }
-
-        [Fact]
         public void ShopHasNoShoppingItems()
         {
             var shop = new Shop();

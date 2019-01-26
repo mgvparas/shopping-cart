@@ -8,22 +8,10 @@ namespace ShoppingCart.Domain
     {
         private List<ShoppingItem> shoppingItems = new List<ShoppingItem>();
 
-        private List<ShoppingItemType> shoppingItemTypes = new List<ShoppingItemType>();
-
-        public List<ShoppingItemType> ShoppingItemTypes
-        {
-            get => shoppingItemTypes;
-            set => shoppingItemTypes = value;
-        }
         public List<ShoppingItem> ShoppingItems
         {
             get => shoppingItems;
             set => shoppingItems = value;
-        }
-
-        public void AddItemType(ShoppingItemType shoppingItemType)
-        {
-            shoppingItemTypes.Add(shoppingItemType);
         }
 
         public void AddShoppingItem(ShoppingItem shoppingItem)
