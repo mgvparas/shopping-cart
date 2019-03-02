@@ -2,11 +2,14 @@
 {
     public class ShoppingItem
     {
-        public ShoppingItem(int cost)
+        public ShoppingItem(Item item, int quantity)
         {
-            Cost = cost;
+            ItemCode = item.Code;
+            Quantity = quantity;
         }
 
-        public int Cost { get; private set; }
+        public string ItemCode { get; private set; }
+
+        public int Quantity { get; private set; }
     }
 }
