@@ -8,22 +8,24 @@ namespace ShoppingCart.Domain
     {
         private List<Item> _items = new List<Item>();
 
-        public Shop(List<Item> items)
+        public Shop(List<ItemDto> itemDtos)
         {
-            _items = items;
+            _items = itemDtos.Select(itemDto => new Item(
+                code: itemDto.Code,
+                price: new Money(value: itemDto.Price)
+            )).ToList();
         }
 
-        public List<Item> Items {
+        public IReadOnlyList<Item> Items {
             get => _items;
-            set => _items = value;
         }
 
-        public decimal GetTotalCost(List<ShoppingItem> shoppingItems)
+        public decimal GetTotalCost(List<ShoppingItemDto> shoppingItemDtos)
         {
-            return shoppingItems.Sum(shoppingItem =>
+            return shoppingItemDtos.Sum(shoppingItemDto =>
             {
-                var matchingItem = Items.SingleOrDefault(item => item.Code == shoppingItem.ItemCode);
-                return matchingItem.DiscountedPrice * shoppingItem.Quantity;
+                var matchingItem = Items.SingleOrDefault(item => item.Code == shoppingItemDto.Item.Code);
+                return matchingItem.DiscountedPrice.Value * shoppingItemDto.Quantity;
             });
         }
 

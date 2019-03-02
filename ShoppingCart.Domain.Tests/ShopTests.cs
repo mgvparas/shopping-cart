@@ -8,10 +8,10 @@ namespace ShoppingCart.Domain.Tests
         public Shop StartShop()
         {
             return new Shop(
-                items: new List<Item> {
-                    new Item(code: "banana", price: 50),
-                    new Item(code: "potato", price: 50),
-                    new Item(code: "bacon", price: 50)
+                itemDtos: new List<ItemDto> {
+                    new ItemDto { Code = "banana", Price = 50 },
+                    new ItemDto { Code = "potato", Price = 50 },
+                    new ItemDto { Code = "bacon", Price = 50 }
                 }
             );
         }
@@ -19,20 +19,20 @@ namespace ShoppingCart.Domain.Tests
         [Fact]
         public void ShopContainsTenItems()
         {
-            var items = new List<Item> {
-                new Item(code: "a", price: 10),
-                new Item(code: "b", price: 10),
-                new Item(code: "c", price: 10),
-                new Item(code: "d", price: 10),
-                new Item(code: "e", price: 10),
-                new Item(code: "f", price: 10),
-                new Item(code: "g", price: 10),
-                new Item(code: "h", price: 10),
-                new Item(code: "i", price: 10),
-                new Item(code: "j", price: 10),
+            var items = new List<ItemDto> {
+                new ItemDto { Code = "a", Price = 10 },
+                new ItemDto { Code = "b", Price = 10 },
+                new ItemDto { Code = "c", Price = 10 },
+                new ItemDto { Code = "d", Price = 10 },
+                new ItemDto { Code = "e", Price = 10 },
+                new ItemDto { Code = "f", Price = 10 },
+                new ItemDto { Code = "g", Price = 10 },
+                new ItemDto { Code = "h", Price = 10 },
+                new ItemDto { Code = "i", Price = 10 },
+                new ItemDto { Code = "j", Price = 10 },
             };
 
-            var shop = new Shop(items: items);
+            var shop = new Shop(itemDtos: items);
 
             Assert.Equal(10, shop.Items.Count);
         }
@@ -45,13 +45,13 @@ namespace ShoppingCart.Domain.Tests
             var item1 = shop.GetItem(code: "banana");
             var item2 = shop.GetItem(code: "potato");
 
-            var shoppingItems = new List<ShoppingItem>
+            var shoppingItemDtos = new List<ShoppingItemDto>
             {
-                new ShoppingItem(item: item1, quantity: 3),
-                new ShoppingItem(item: item2, quantity: 1)
+                new ShoppingItemDto { Item = item1, Quantity = 3 },
+                new ShoppingItemDto { Item = item2, Quantity = 1 }
             };
 
-            var totalCost = shop.GetTotalCost(shoppingItems);
+            var totalCost = shop.GetTotalCost(shoppingItemDtos);
 
             Assert.Equal(200, totalCost);
         }
@@ -66,13 +66,13 @@ namespace ShoppingCart.Domain.Tests
 
             var item2 = shop.GetItem(code: "potato");
 
-            var shoppingItems = new List<ShoppingItem>
+            var shoppingItemDtos = new List<ShoppingItemDto>
             {
-                new ShoppingItem(item: item1, quantity: 3),
-                new ShoppingItem(item: item2, quantity: 1)
+                new ShoppingItemDto { Item = item1, Quantity = 3 },
+                new ShoppingItemDto { Item = item2, Quantity = 1 }
             };
 
-            var totalCost = shop.GetTotalCost(shoppingItems);
+            var totalCost = shop.GetTotalCost(shoppingItemDtos);
 
             Assert.Equal(125, totalCost);
         }
@@ -83,17 +83,17 @@ namespace ShoppingCart.Domain.Tests
             var shop = StartShop();
 
             var item1 = shop.GetItem(code: "banana");
-            item1.SetDiscountAmount(25);
+            item1.SetDiscountAmount(new Money(25));
 
             var item2 = shop.GetItem(code: "potato");
 
-            var shoppingItems = new List<ShoppingItem>
+            var shoppingItemDtos = new List<ShoppingItemDto>
             {
-                new ShoppingItem(item: item1, quantity: 3),
-                new ShoppingItem(item: item2, quantity: 1)
+                new ShoppingItemDto { Item = item1, Quantity = 3 },
+                new ShoppingItemDto { Item = item2, Quantity = 1 }
             };
 
-            var totalCost = shop.GetTotalCost(shoppingItems);
+            var totalCost = shop.GetTotalCost(shoppingItemDtos);
 
             Assert.Equal(125, totalCost);
         }

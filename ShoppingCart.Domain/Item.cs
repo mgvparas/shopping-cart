@@ -4,7 +4,7 @@ namespace ShoppingCart.Domain
 {
     public class Item
     {
-        public Item(string code, decimal price)
+        public Item(string code, Money price)
         {
             Code = code;
             Price = price;
@@ -13,17 +13,17 @@ namespace ShoppingCart.Domain
 
         public string Code { get; private set; }
 
-        public decimal Price { get; private set; }
+        public Money Price { get; private set; }
 
-        public decimal DiscountedPrice { get; private set; }
+        public Money DiscountedPrice { get; private set; }
 
         public void SetDiscountPercentage(double percentage)
         {
-            var discountAmount = Price * (Convert.ToDecimal(percentage / 100));
+            var discountAmount = Price * (percentage / 100);
             DiscountedPrice = Price - discountAmount;
         }
 
-        public void SetDiscountAmount(decimal amount)
+        public void SetDiscountAmount(Money amount)
         {
             DiscountedPrice = Price - amount;
         }
