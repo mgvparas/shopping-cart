@@ -1,11 +1,13 @@
 ﻿namespace ShoppingCart.Domain
 {
-    public class ItemDto
+    public class CouponDto
     {
         public string Code { get; set; }
 
-        public decimal Price { get; set; }
+        public double DiscountPercentage { get; set; }
 
         public string ItemTypeCode { get; set; }
+
+        public CouponTypeEnum CouponType { get; set; }
     }
 }
