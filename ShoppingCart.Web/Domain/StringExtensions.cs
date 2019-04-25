@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ShoppingCart.Domain
+﻿namespace ShoppingCart.Web.Domain
 {
     static class StringExtensions
     {

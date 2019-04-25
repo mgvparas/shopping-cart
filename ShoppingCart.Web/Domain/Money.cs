@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ShoppingCart.Domain
+namespace ShoppingCart.Web.Domain
 {
     public class Money
     {

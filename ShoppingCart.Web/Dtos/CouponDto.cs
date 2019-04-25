@@ -1,4 +1,6 @@
-﻿namespace ShoppingCart.Domain
+﻿using ShoppingCart.Web.Domain;
+
+namespace ShoppingCart.Web.Dtos
 {
     public class CouponDto
     {

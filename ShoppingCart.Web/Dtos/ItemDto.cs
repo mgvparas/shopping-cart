@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Domain
+﻿namespace ShoppingCart.Web.Dtos
 {
     public class ItemDto
     {

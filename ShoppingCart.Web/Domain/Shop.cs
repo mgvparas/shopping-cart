@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using ShoppingCart.Web.Dtos;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace ShoppingCart.Domain
+namespace ShoppingCart.Web.Domain
 {
   public class Shop
   {
@@ -38,14 +39,14 @@ namespace ShoppingCart.Domain
       get => _coupons;
     }
 
-    public decimal GetTotalCost(List<ShoppingItemDto> shoppingItemDtos, string couponCode = "")
+    public decimal GetTotalCost(List<ShoppingItem> shoppingItems, string couponCode = "")
     {
       if (!couponCode.IsNullOrWhiteSpace())
       {
         ApplyCoupon(couponCode);
       }
 
-      return shoppingItemDtos.Sum(shoppingItemDto =>
+      return shoppingItems.Sum(shoppingItemDto =>
       {
         Item matchingItem = Items.SingleOrDefault(item => item.Code.ToLower() == shoppingItemDto.Item.Code.ToLower());
         return matchingItem.DiscountedPrice.Value * shoppingItemDto.Quantity;

@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Domain
+﻿namespace ShoppingCart.Web.Domain
 {
     public class ItemType
     {

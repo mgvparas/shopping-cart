@@ -1,6 +1,8 @@
-﻿namespace ShoppingCart.Domain
+﻿using ShoppingCart.Web.Domain;
+
+namespace ShoppingCart.Web.Dtos
 {
-    public class ShoppingItemDto
+    public class ShoppingItem
     {
         public Item Item { get; set; }
 
